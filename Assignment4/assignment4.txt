@@ -1,0 +1,69 @@
+Create table customer -
+create table customer (id int auto_increment, name varchar(20)not null, contact numeric(10),address varchar(20), dob date, primary key(id));
+
+Create table orders -
+create table orders (o_id int auto_increment, date date, quantity int, total_cost int, primary key(o_id));
+
+Create table product -
+create table orders (o_id int auto_increment, date date, quantity int, total_cost int, primary key(o_id));
+
+Create table  category - 
+create table category (cat_id int auto_increment, cat_name varchar(20)not null, primary key(cat_id));
+
+Add foreign key customer id to orders table - 
+alter table orders add column c_id int;
+alter table orders add foreign key c_id(c_id) references customer(id) on delete no action on update cascade;
+
+Add foreign key product id to orders table -
+alter table orders add column p_id int;                                  
+alter table orders add foreign key p_id(p_id) references product(p_id) on delete no action on update cascade;
+
+
+Customer table -
+desc customer;
++---------+---------------+------+-----+---------+----------------+
+| Field   | Type          | Null | Key | Default | Extra          |
++---------+---------------+------+-----+---------+----------------+
+| id      | int(11)       | NO   | PRI | NULL    | auto_increment |
+| name    | varchar(20)   | NO   |     | NULL    |                |
+| contact | decimal(10,0) | YES  |     | NULL    |                |
+| address | varchar(20)   | YES  |     | NULL    |                |
+| dob     | date          | YES  |     | NULL    |                |
++---------+---------------+------+-----+---------+----------------+
+
+
+Orders table -
+desc orders;
++------------+---------+------+-----+---------+----------------+
+| Field      | Type    | Null | Key | Default | Extra          |
++------------+---------+------+-----+---------+----------------+
+| o_id       | int(11) | NO   | PRI | NULL    | auto_increment |
+| date       | date    | YES  |     | NULL    |                |
+| quantity   | int(11) | YES  |     | NULL    |                |
+| total_cost | int(11) | YES  |     | NULL    |                |
+| c_id       | int(11) | YES  | MUL | NULL    |                |
+| p_id       | int(11) | YES  | MUL | NULL    |                |
++------------+---------+------+-----+---------+----------------+
+
+
+Product table -
+desc product;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| p_id       | int(11)      | NO   | PRI | NULL    | auto_increment |
+| name       | varchar(20)  | NO   |     | NULL    |                |
+| unit_price | decimal(5,2) | YES  |     | NULL    |                |
+| stock      | int(11)      | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+
+
+Category table -
+desc category;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| cat_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| cat_name | varchar(20) | NO   |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+
