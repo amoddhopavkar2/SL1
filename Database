@@ -1,0 +1,16 @@
+EXPORT
+sudo mysqldump -u root -p orderManagment > orderManagment.sql
+
+IMPORT 
+create an empty newdatabase
+mysql -u [username] -p newdatabase < [database name].sql
+WORKING WITH DATABASES
+
+1) Create Database
+	create database orderMan;
+2) Show DB
+	show Databases;
+3) TO SELECT DATABASE
+	USE orderMan;
+4) Delete Database
+drop database orderMan;
