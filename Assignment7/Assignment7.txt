@@ -1,0 +1,63 @@
+A]. Set Membership(in, not in) :-
+	
+	Get product details which are not from biscuits and milk category -->
+	select * from product where p_id not in(select p_id from product where name='Biscuit' or name='Milk');
+	+------+-------+------------+-------+
+	| p_id | name  | unit_price | stock |
+	+------+-------+------------+-------+
+	|    2 | Sugar |      10.00 |    50 |
+	|    3 | Salt  |       5.00 |   220 |
+	|    4 | Tea   |      80.00 |    20 |
+	|    7 | Bread |      25.00 |    15 |
+	+------+-------+------------+-------+
+	
+	Get product details which are from biscuits and milk category -->
+	select * from product where p_id in(select p_id from product where name='Biscuit' or name='Milk');
+	+------+---------+------------+-------+
+	| p_id | name    | unit_price | stock |
+	+------+---------+------------+-------+
+	|    1 | Biscuit |      20.00 |   100 |
+	|    6 | Milk    |      40.00 |    25 |
+	+------+---------+------------+-------+
+	
+	Get the name and quantity of product which have either 15 or 20 or 25 quantities -->
+	select * from product where stock in (15,20,25);
+	+------+-------+------------+-------+
+	| p_id | name  | unit_price | stock |
+	+------+-------+------------+-------+
+	|    4 | Tea   |      80.00 |    20 |
+	|    6 | Milk  |      40.00 |    25 |
+	|    7 | Bread |      25.00 |    15 |
+	+------+-------+------------+-------+
+	
+	
+B]. Set Comparison (<,>,<=,>=, <some, >=some, <all etc.) :-
+
+	Get the product details whose product price is more than “Sugar” -->
+	select * from product where unit_price > (select unit_price from product where name='Sugar');
+	+------+---------+------------+-------+
+	| p_id | name    | unit_price | stock |
+	+------+---------+------------+-------+
+	|    1 | Biscuit |      20.00 |   100 |
+	|    4 | Tea     |      80.00 |    20 |
+	|    6 | Milk    |      40.00 |    25 |
+	|    7 | Bread   |      25.00 |    15 |
+	+------+---------+------------+-------+
+	
+	Find the purchase order whose purchase amount is greater than maximum purchase amount -->
+	select * from product where unit_price > (select max(unit_price) from product);
+	Empty set
+	
+	Find the purchase order whose purchase amount is greater than or equal to maximum purchase amount -->
+	select * from product where unit_price >= (select max(unit_price) from product);
+	+------+------+------------+-------+
+	| p_id | name | unit_price | stock |
+	+------+------+------------+-------+
+	|    4 | Tea  |      80.00 |    20 |
+	+------+------+------------+-------+
+	
+	
+	
+
+	
+

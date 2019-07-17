@@ -1,0 +1,85 @@
+A]. Aggregate functions (count, sum, avgetc) :-
+
+	Get the total no of customers -->
+	select count(*) from customer;
+	+----------+
+	| count(*) |
+	+----------+
+	|        6 |
+	+----------+
+
+	Display average purchase amount of all the customers -->
+	select avg(total_cost) 'Average Order Price' from orders;
+	+---------------------+
+	| Average Order Price |
+	+---------------------+
+	|            128.3333 |
+	+---------------------+
+
+	Display total purchase amount of all the customers -->
+	select sum(total_cost) 'Total Orders Value' from orders;
+	+--------------------+
+	| Total Orders Value |
+	+--------------------+
+	|                770 |
+	+--------------------+
+
+	Display Max total purchase amount from all customers -->
+	select max(total_cost) as 'Highest Total Cost' from orders;
+	+--------------------+
+	| Highest Total Cost |
+	+--------------------+
+	|                500 |
+	+--------------------+
+
+	Display Min total purchase amount from all customers -->
+	select min(total_cost) as 'Highest Total Cost' from orders;
+	+--------------------+
+	| Highest Total Cost |
+	+--------------------+
+	|                 20 |
+	+--------------------+
+
+
+
+B]. Built in functions (now (), date (), day (), time () etc) :-
+
+	Display the Dayname for orders on '15th July 2019' with order amount >= 100 -->
+	select distinct dayname('2019-07-15') 'Dayname' from orders where total_cost>=100;
+	+---------+
+	| Dayname |
+	+---------+
+	| Monday  |
+	+---------+
+
+	Display the Month-name for orders on "10th July 2019" -->
+	select distinct monthname('2019-07-10') 'Month-name' from orders;
+	+------------+
+	| Month-name |
+	+------------+
+	| July       |
+	+------------+
+
+	Display the year on "10th July" -->
+	select year('2019-07-10') 'Year on 10th July';
+	+-------------------+
+	| Year on 10th July |
+	+-------------------+
+	|              2019 |
+	+-------------------+
+	
+	Get current date & time, current time, current date -->
+	select now() 'Current date and time';
+	+-----------------------+
+	| Current date and time |
+	+-----------------------+
+	| 2019-07-17 11:58:42   |
+	+-----------------------+
+	
+	Get 6 month future & past date using interval function based on current date and name the column accordingly -->
+	select (now() - interval 6 month) '6 months in past date',now() 'Current date',(now() + interval 6 month) '6 months in future date';
+	+-----------------------+---------------------+-------------------------+
+	| 6 months in past date | Current date        | 6 months in future date |
+	+-----------------------+---------------------+-------------------------+
+	| 2019-01-17 12:18:11   | 2019-07-17 12:18:11 | 2020-01-17 12:18:11     |
+	+-----------------------+---------------------+-------------------------+
