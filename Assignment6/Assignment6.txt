@@ -1,44 +1,56 @@
 A]. Aggregate functions (count, sum, avgetc) :-
 
 	Get the total no of customers -->
-	select count(*) from customer;
+	mysql> select count(*) from customer;
 	+----------+
 	| count(*) |
 	+----------+
-	|        6 |
+	|        4 |
+	+----------+
+	1 row in set (0.00 sec)
+
+	mysql> select count(*) from category;
+	+----------+
+	| count(*) |
+	+----------+
+	|       20 |
 	+----------+
 
+
 	Display average purchase amount of all the customers -->
-	select avg(total_cost) 'Average Order Price' from orders;
-	+---------------------+
-	| Average Order Price |
-	+---------------------+
-	|            128.3333 |
-	+---------------------+
+	mysql> select avg(total_amt) 'Average purchase amount' from orders;
+	+-------------------------+
+	| Average purchase amount |
+	+-------------------------+
+	|                334.0000 |
+	+-------------------------+
+
 
 	Display total purchase amount of all the customers -->
-	select sum(total_cost) 'Total Orders Value' from orders;
-	+--------------------+
-	| Total Orders Value |
-	+--------------------+
-	|                770 |
-	+--------------------+
+	mysql> select sum(total_amt) 'Total purchase amount' from orders;
+	+-----------------------+
+	| Total purchase amount |
+	+-----------------------+
+	|                  1670 |
+	+-----------------------+
+
 
 	Display Max total purchase amount from all customers -->
-	select max(total_cost) as 'Highest Total Cost' from orders;
-	+--------------------+
-	| Highest Total Cost |
-	+--------------------+
-	|                500 |
-	+--------------------+
+	mysql> select max(total_amt) 'Highest purchase amount' from orders;
+	+-------------------------+
+	| Highest purchase amount |
+	+-------------------------+
+	|                    1045 |
+	+-------------------------+
+
 
 	Display Min total purchase amount from all customers -->
-	select min(total_cost) as 'Highest Total Cost' from orders;
-	+--------------------+
-	| Highest Total Cost |
-	+--------------------+
-	|                 20 |
-	+--------------------+
+	mysql> select min(total_amt) 'Lowest purchase amount' from orders;
+	+------------------------+
+	| Lowest purchase amount |
+	+------------------------+
+	|                     80 |
+	+------------------------+
 
 
 
