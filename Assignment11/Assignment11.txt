@@ -1,0 +1,96 @@
+mysql> create or replace view manager as select cid,name,email,state,city,street from customer;
+
+mysql> select * from customer;
++-----+----------------+-------------------+-------------+--------+------------+
+| cid | name           | email             | state       | city   | street     |
++-----+----------------+-------------------+-------------+--------+------------+
+|   1 | Animesh Landge | animesh@gmail.com | Maharashtra | Mumbai | Borivali   |
+|   2 | Soham Kotalvar | soham@gmail.com   | Maharashtra | Nanded | Kalamandir |
+|   3 | Kunal Sachdev  | kunal@gmail.com   | Maharashtra | Nashik | Devlali    |
+|   4 | Yash Jeswani   | yash@gmail.com    | Maharashtra | Pune   | Katraj     |
++-----+----------------+-------------------+-------------+--------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from manager;
++-----+----------------+-------------------+-------------+--------+------------+
+| cid | name           | email             | state       | city   | street     |
++-----+----------------+-------------------+-------------+--------+------------+
+|   1 | Animesh Landge | animesh@gmail.com | Maharashtra | Mumbai | Borivali   |
+|   2 | Soham Kotalvar | soham@gmail.com   | Maharashtra | Nanded | Kalamandir |
+|   3 | Kunal Sachdev  | kunal@gmail.com   | Maharashtra | Nashik | Devlali    |
+|   4 | Yash Jeswani   | yash@gmail.com    | Maharashtra | Pune   | Katraj     |
++-----+----------------+-------------------+-------------+--------+------------+
+4 rows in set (0.00 sec)
+
+mysql> insert into customer values (5,'Amod Dhopavkar','amod@gmail.com','Maharashtra','Nagpur','8 Rasta');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from customer;
++-----+----------------+-------------------+-------------+--------+------------+
+| cid | name           | email             | state       | city   | street     |
++-----+----------------+-------------------+-------------+--------+------------+
+|   1 | Animesh Landge | animesh@gmail.com | Maharashtra | Mumbai | Borivali   |
+|   2 | Soham Kotalvar | soham@gmail.com   | Maharashtra | Nanded | Kalamandir |
+|   3 | Kunal Sachdev  | kunal@gmail.com   | Maharashtra | Nashik | Devlali    |
+|   4 | Yash Jeswani   | yash@gmail.com    | Maharashtra | Pune   | Katraj     |
+|   5 | Amod Dhopavkar | amod@gmail.com    | Maharashtra | Nagpur | 8 Rasta    |
++-----+----------------+-------------------+-------------+--------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from manager;
++-----+----------------+-------------------+-------------+--------+------------+
+| cid | name           | email             | state       | city   | street     |
++-----+----------------+-------------------+-------------+--------+------------+
+|   1 | Animesh Landge | animesh@gmail.com | Maharashtra | Mumbai | Borivali   |
+|   2 | Soham Kotalvar | soham@gmail.com   | Maharashtra | Nanded | Kalamandir |
+|   3 | Kunal Sachdev  | kunal@gmail.com   | Maharashtra | Nashik | Devlali    |
+|   4 | Yash Jeswani   | yash@gmail.com    | Maharashtra | Pune   | Katraj     |
+|   5 | Amod Dhopavkar | amod@gmail.com    | Maharashtra | Nagpur | 8 Rasta    |
++-----+----------------+-------------------+-------------+--------+------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into manager values (6,'Aditya Chaloo','aditya@gmail.com','Maharashtra','Pune','K.P');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from customer;
++-----+----------------+-------------------+-------------+--------+------------+
+| cid | name           | email             | state       | city   | street     |
++-----+----------------+-------------------+-------------+--------+------------+
+|   1 | Animesh Landge | animesh@gmail.com | Maharashtra | Mumbai | Borivali   |
+|   2 | Soham Kotalvar | soham@gmail.com   | Maharashtra | Nanded | Kalamandir |
+|   3 | Kunal Sachdev  | kunal@gmail.com   | Maharashtra | Nashik | Devlali    |
+|   4 | Yash Jeswani   | yash@gmail.com    | Maharashtra | Pune   | Katraj     |
+|   5 | Amod Dhopavkar | amod@gmail.com    | Maharashtra | Nagpur | 8 Rasta    |
+|   6 | Aditya Chaloo  | aditya@gmail.com  | Maharashtra | Pune   | K.P        |
++-----+----------------+-------------------+-------------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from manager;
++-----+----------------+-------------------+-------------+--------+------------+
+| cid | name           | email             | state       | city   | street     |
++-----+----------------+-------------------+-------------+--------+------------+
+|   1 | Animesh Landge | animesh@gmail.com | Maharashtra | Mumbai | Borivali   |
+|   2 | Soham Kotalvar | soham@gmail.com   | Maharashtra | Nanded | Kalamandir |
+|   3 | Kunal Sachdev  | kunal@gmail.com   | Maharashtra | Nashik | Devlali    |
+|   4 | Yash Jeswani   | yash@gmail.com    | Maharashtra | Pune   | Katraj     |
+|   5 | Amod Dhopavkar | amod@gmail.com    | Maharashtra | Nagpur | 8 Rasta    |
+|   6 | Aditya Chaloo  | aditya@gmail.com  | Maharashtra | Pune   | K.P        |
++-----+----------------+-------------------+-------------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> create or replace view manager as select name,email,city from customer;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from manager;
++----------------+-------------------+--------+
+| name           | email             | city   |
++----------------+-------------------+--------+
+| Animesh Landge | animesh@gmail.com | Mumbai |
+| Soham Kotalvar | soham@gmail.com   | Nanded |
+| Kunal Sachdev  | kunal@gmail.com   | Nashik |
+| Yash Jeswani   | yash@gmail.com    | Pune   |
+| Amod Dhopavkar | amod@gmail.com    | Nagpur |
+| Aditya Chaloo  | aditya@gmail.com  | Pune   |
++----------------+-------------------+--------+
+6 rows in set (0.01 sec)
+
