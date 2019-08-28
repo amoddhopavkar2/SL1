@@ -1,0 +1,8 @@
+1. Check if stock is less than 0 after insertion in product table -->
+mysql> create trigger after_insert after insert on product for each row begin if(new.stock<=0) then signal sqlstate '80000' set message_text='Stock cannot be less than 0'  ; end if; end$$
+
+mysql> insert into product(pid,pname,stock,price) values (45,'duster',0,30); 
+ERROR 1644 (80000): Stock cannot be less than 0
+
+
+
