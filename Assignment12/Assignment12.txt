@@ -7,6 +7,38 @@ db.Employee_info.drop()
 3. Create capped collection -->
 db.createCollection("Employee_info",{capped:true, size:20480})
 
+4. Insert validations -->
+> db.createCollection("students",{ validator:{ $jsonSchema:{ bsonType:"object", required:["ID","name"], properties:{ ID:{ bsonType:"int", description:"Must be an int and is required" }, name:{ bsonType:"string", description:"Must be a string and is required" } } } } } )
+{ "ok" : 1 }
+
+5. Batch insert -->
+> var bulk = db.students.initializeUnorderedBulkOp()
+> bulk.insert({ID:1, name:"Amod"})
+> bulk.insert({ID:2, name:"qwer"})
+> bulk.insert({ID:3, name:"zxcv"})
+> bulk.insert({ID:3, name:"vbnm"})
+> bulk.insert({ID:5, name:"asdf"})
+> bulk.insert({ID:6, name:"hjkl"})
+> bulk.execute()
+BulkWriteResult({
+	"writeErrors" : [ ],
+	"writeConcernErrors" : [ ],
+	"nInserted" : 6,
+	"nUpserted" : 0,
+	"nMatched" : 0,
+	"nModified" : 0,
+	"nRemoved" : 0,
+	"upserted" : [ ]
+})
+
+> db.students.find()
+{ "_id" : ObjectId("5d8897eebc6b6356c13c7194"), "ID" : 1, "name" : "Amod" }
+{ "_id" : ObjectId("5d8897eebc6b6356c13c7195"), "ID" : 2, "name" : "qwer" }
+{ "_id" : ObjectId("5d8897eebc6b6356c13c7196"), "ID" : 3, "name" : "zxcv" }
+{ "_id" : ObjectId("5d8897eebc6b6356c13c7197"), "ID" : 3, "name" : "vbnm" }
+{ "_id" : ObjectId("5d8897eebc6b6356c13c7198"), "ID" : 5, "name" : "asdf" }
+{ "_id" : ObjectId("5d8897eebc6b6356c13c7199"), "ID" : 6, "name" : "hjkl" }
+
 4. Insert documents in collection -->
 > db.Employee_info.insert({ID:"1", Name:"Amod", Salary:30000, status:"A"})
 WriteResult({ "nInserted" : 1 })
