@@ -1,0 +1,109 @@
+1. Find -->
+db.Employee_info.find()
+{ "_id" : ObjectId("5d88866c0b5bb87e1e42cd9e"), "ID" : "1", "Name" : "Amod", "Salary" : 30000, "status" : "A" }
+{ "_id" : ObjectId("5d8886960b5bb87e1e42cd9f"), "ID" : "2", "Name" : "qwer", "Salary" : 30000, "status" : "A" }
+{ "_id" : ObjectId("5d8886ab0b5bb87e1e42cda0"), "ID" : "5", "Name" : "zxcv", "Salary" : 40000, "status" : "A" }
+{ "_id" : ObjectId("5d8886b50b5bb87e1e42cda1"), "ID" : "4", "Name" : "hjkl", "Salary" : 43000, "status" : "B" }
+{ "_id" : ObjectId("5d8886c00b5bb87e1e42cda2"), "ID" : "5", "Name" : "uiop", "Salary" : 23000, "status" : "B" }
+{ "_id" : ObjectId("5d8886d00b5bb87e1e42cda3"), "ID" : "5", "Name" : "vbnm", "Salary" : 25000, "status" : "A" }
+{ "_id" : ObjectId("5d8886dd0b5bb87e1e42cda4"), "ID" : "5", "Name" : "asdf", "Salary" : 35000, "status" : "A" }
+{ "_id" : ObjectId("5d8886ec0b5bb87e1e42cda5"), "ID" : "5", "Name" : "bass", "Salary" : 37000, "status" : "B" }
+
+
+2. Find pretty -->
+> db.Employee_info.find().pretty()
+{
+	"_id" : ObjectId("5d88866c0b5bb87e1e42cd9e"),
+	"ID" : "1",
+	"Name" : "Amod",
+	"Salary" : 30000,
+	"status" : "A"
+}
+{
+	"_id" : ObjectId("5d8886960b5bb87e1e42cd9f"),
+	"ID" : "2",
+	"Name" : "qwer",
+	"Salary" : 30000,
+	"status" : "A"
+}
+{
+	"_id" : ObjectId("5d8886ab0b5bb87e1e42cda0"),
+	"ID" : "5",
+	"Name" : "zxcv",
+	"Salary" : 40000,
+	"status" : "A"
+}
+{
+	"_id" : ObjectId("5d8886b50b5bb87e1e42cda1"),
+	"ID" : "4",
+	"Name" : "hjkl",
+	"Salary" : 43000,
+	"status" : "B"
+}
+{
+	"_id" : ObjectId("5d8886c00b5bb87e1e42cda2"),
+	"ID" : "5",
+	"Name" : "uiop",
+	"Salary" : 23000,
+	"status" : "B"
+}
+{
+	"_id" : ObjectId("5d8886d00b5bb87e1e42cda3"),
+	"ID" : "5",
+	"Name" : "vbnm",
+	"Salary" : 25000,
+	"status" : "A"
+}
+{
+	"_id" : ObjectId("5d8886dd0b5bb87e1e42cda4"),
+	"ID" : "5",
+	"Name" : "asdf",
+	"Salary" : 35000,
+	"status" : "A"
+}
+{
+	"_id" : ObjectId("5d8886ec0b5bb87e1e42cda5"),
+	"ID" : "5",
+	"Name" : "bass",
+	"Salary" : 37000,
+	"status" : "B"
+}
+
+
+3. Find usind condition -->
+> db.Employee_info.find({Salary:25000})
+{ "_id" : ObjectId("5d8886d00b5bb87e1e42cda3"), "ID" : "5", "Name" : "vbnm", "Salary" : 25000, "status" : "A" }
+
+4. Find using or -->
+> db.Employee_info.find({$or:[{Salary:25000},{Salary:35000}]})
+{ "_id" : ObjectId("5d8886d00b5bb87e1e42cda3"), "ID" : "5", "Name" : "vbnm", "Salary" : 25000, "status" : "A" }
+{ "_id" : ObjectId("5d8886dd0b5bb87e1e42cda4"), "ID" : "5", "Name" : "asdf", "Salary" : 35000, "status" : "A" }
+
+5. Find with >,<,>=,<= -->
+> db.Employee_info.find({Salary:{$gt:25000}})
+{ "_id" : ObjectId("5d88866c0b5bb87e1e42cd9e"), "ID" : "1", "Name" : "Amod", "Salary" : 30000, "status" : "A" }
+{ "_id" : ObjectId("5d8886960b5bb87e1e42cd9f"), "ID" : "2", "Name" : "qwer", "Salary" : 30000, "status" : "A" }
+{ "_id" : ObjectId("5d8886ab0b5bb87e1e42cda0"), "ID" : "5", "Name" : "zxcv", "Salary" : 40000, "status" : "A" }
+{ "_id" : ObjectId("5d8886b50b5bb87e1e42cda1"), "ID" : "4", "Name" : "hjkl", "Salary" : 43000, "status" : "B" }
+{ "_id" : ObjectId("5d8886dd0b5bb87e1e42cda4"), "ID" : "5", "Name" : "asdf", "Salary" : 35000, "status" : "A" }
+{ "_id" : ObjectId("5d8886ec0b5bb87e1e42cda5"), "ID" : "5", "Name" : "bass", "Salary" : 37000, "status" : "B" }
+
+> db.Employee_info.find({Salary:{$lt:30000}})
+{ "_id" : ObjectId("5d8886c00b5bb87e1e42cda2"), "ID" : "5", "Name" : "uiop", "Salary" : 23000, "status" : "B" }
+{ "_id" : ObjectId("5d8886d00b5bb87e1e42cda3"), "ID" : "5", "Name" : "vbnm", "Salary" : 25000, "status" : "A" }
+
+> db.Employee_info.find({Salary:{$gte:27000}})
+{ "_id" : ObjectId("5d88866c0b5bb87e1e42cd9e"), "ID" : "1", "Name" : "Amod", "Salary" : 30000, "status" : "A" }
+{ "_id" : ObjectId("5d8886960b5bb87e1e42cd9f"), "ID" : "2", "Name" : "qwer", "Salary" : 30000, "status" : "A" }
+{ "_id" : ObjectId("5d8886ab0b5bb87e1e42cda0"), "ID" : "5", "Name" : "zxcv", "Salary" : 40000, "status" : "A" }
+{ "_id" : ObjectId("5d8886b50b5bb87e1e42cda1"), "ID" : "4", "Name" : "hjkl", "Salary" : 43000, "status" : "B" }
+{ "_id" : ObjectId("5d8886dd0b5bb87e1e42cda4"), "ID" : "5", "Name" : "asdf", "Salary" : 35000, "status" : "A" }
+{ "_id" : ObjectId("5d8886ec0b5bb87e1e42cda5"), "ID" : "5", "Name" : "bass", "Salary" : 37000, "status" : "B" }
+
+> db.Employee_info.find({Salary:{$lte:25000}})
+{ "_id" : ObjectId("5d8886c00b5bb87e1e42cda2"), "ID" : "5", "Name" : "uiop", "Salary" : 23000, "status" : "B" }
+{ "_id" : ObjectId("5d8886d00b5bb87e1e42cda3"), "ID" : "5", "Name" : "vbnm", "Salary" : 25000, "status" : "A" }
+
+
+
+
