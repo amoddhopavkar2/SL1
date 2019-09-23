@@ -1,0 +1,50 @@
+1. Sorting descending -->
+> db.Employee_info.find().sort({Name: -1})
+{ "_id" : ObjectId("5d8886ab0b5bb87e1e42cda0"), "ID" : "5", "Name" : "zxcv", "Salary" : 40000, "status" : "A" }
+{ "_id" : ObjectId("5d8886d00b5bb87e1e42cda3"), "ID" : "5", "Name" : "vbnm", "Salary" : 25000, "status" : "A" }
+{ "_id" : ObjectId("5d8886c00b5bb87e1e42cda2"), "ID" : "5", "Name" : "uiop", "Salary" : 23000, "status" : "B" }
+{ "_id" : ObjectId("5d8886960b5bb87e1e42cd9f"), "ID" : "2", "Name" : "qwer", "Salary" : 30000, "status" : "A" }
+{ "_id" : ObjectId("5d8886b50b5bb87e1e42cda1"), "ID" : "4", "Name" : "hjkl", "Salary" : 43000, "status" : "B" }
+{ "_id" : ObjectId("5d8886ec0b5bb87e1e42cda5"), "ID" : "5", "Name" : "bass", "Salary" : 37000, "status" : "B" }
+{ "_id" : ObjectId("5d8886dd0b5bb87e1e42cda4"), "ID" : "5", "Name" : "asdf", "Salary" : 35000, "status" : "A" }
+{ "_id" : ObjectId("5d88866c0b5bb87e1e42cd9e"), "ID" : "1", "Name" : "Amod", "Salary" : 30000, "status" : "A" }
+
+2. Sorting ascending -->
+> db.Employee_info.find().sort({Name: 1})
+{ "_id" : ObjectId("5d88866c0b5bb87e1e42cd9e"), "ID" : "1", "Name" : "Amod", "Salary" : 30000, "status" : "A" }
+{ "_id" : ObjectId("5d8886dd0b5bb87e1e42cda4"), "ID" : "5", "Name" : "asdf", "Salary" : 35000, "status" : "A" }
+{ "_id" : ObjectId("5d8886ec0b5bb87e1e42cda5"), "ID" : "5", "Name" : "bass", "Salary" : 37000, "status" : "B" }
+{ "_id" : ObjectId("5d8886b50b5bb87e1e42cda1"), "ID" : "4", "Name" : "hjkl", "Salary" : 43000, "status" : "B" }
+{ "_id" : ObjectId("5d8886960b5bb87e1e42cd9f"), "ID" : "2", "Name" : "qwer", "Salary" : 30000, "status" : "A" }
+{ "_id" : ObjectId("5d8886c00b5bb87e1e42cda2"), "ID" : "5", "Name" : "uiop", "Salary" : 23000, "status" : "B" }
+{ "_id" : ObjectId("5d8886d00b5bb87e1e42cda3"), "ID" : "5", "Name" : "vbnm", "Salary" : 25000, "status" : "A" }
+{ "_id" : ObjectId("5d8886ab0b5bb87e1e42cda0"), "ID" : "5", "Name" : "zxcv", "Salary" : 40000, "status" : "A" }
+
+3. Limiting to 2 documents -->
+> db.Employee_info.find().limit(2)
+{ "_id" : ObjectId("5d88866c0b5bb87e1e42cd9e"), "ID" : "1", "Name" : "Amod", "Salary" : 30000, "status" : "A" }
+{ "_id" : ObjectId("5d8886960b5bb87e1e42cd9f"), "ID" : "2", "Name" : "qwer", "Salary" : 30000, "status" : "A" }
+
+4. Limiting to last 2 documents -->
+> db.Employee_info.find().sort({$natural: -1}).limit(2)
+{ "_id" : ObjectId("5d8886ec0b5bb87e1e42cda5"), "ID" : "5", "Name" : "bass", "Salary" : 37000, "status" : "B" }
+{ "_id" : ObjectId("5d8886dd0b5bb87e1e42cda4"), "ID" : "5", "Name" : "asdf", "Salary" : 35000, "status" : "A" }
+
+5. Skipping 2 documents -->
+> db.Employee_info.find().skip(2)
+{ "_id" : ObjectId("5d8886ab0b5bb87e1e42cda0"), "ID" : "5", "Name" : "zxcv", "Salary" : 40000, "status" : "A" }
+{ "_id" : ObjectId("5d8886b50b5bb87e1e42cda1"), "ID" : "4", "Name" : "hjkl", "Salary" : 43000, "status" : "B" }
+{ "_id" : ObjectId("5d8886c00b5bb87e1e42cda2"), "ID" : "5", "Name" : "uiop", "Salary" : 23000, "status" : "B" }
+{ "_id" : ObjectId("5d8886d00b5bb87e1e42cda3"), "ID" : "5", "Name" : "vbnm", "Salary" : 25000, "status" : "A" }
+{ "_id" : ObjectId("5d8886dd0b5bb87e1e42cda4"), "ID" : "5", "Name" : "asdf", "Salary" : 35000, "status" : "A" }
+{ "_id" : ObjectId("5d8886ec0b5bb87e1e42cda5"), "ID" : "5", "Name" : "bass", "Salary" : 37000, "status" : "B" }
+
+6. Skipping last 2 documents -->
+> db.Employee_info.find().sort({$natural:-1}).skip(2)
+{ "_id" : ObjectId("5d8886d00b5bb87e1e42cda3"), "ID" : "5", "Name" : "vbnm", "Salary" : 25000, "status" : "A" }
+{ "_id" : ObjectId("5d8886c00b5bb87e1e42cda2"), "ID" : "5", "Name" : "uiop", "Salary" : 23000, "status" : "B" }
+{ "_id" : ObjectId("5d8886b50b5bb87e1e42cda1"), "ID" : "4", "Name" : "hjkl", "Salary" : 43000, "status" : "B" }
+{ "_id" : ObjectId("5d8886ab0b5bb87e1e42cda0"), "ID" : "5", "Name" : "zxcv", "Salary" : 40000, "status" : "A" }
+{ "_id" : ObjectId("5d8886960b5bb87e1e42cd9f"), "ID" : "2", "Name" : "qwer", "Salary" : 30000, "status" : "A" }
+{ "_id" : ObjectId("5d88866c0b5bb87e1e42cd9e"), "ID" : "1", "Name" : "Amod", "Salary" : 30000, "status" : "A" }
+
