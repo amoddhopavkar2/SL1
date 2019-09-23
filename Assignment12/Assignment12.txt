@@ -1,0 +1,95 @@
+1. Create collection -->
+db.createCollection("Employee_info")
+
+2. Drop collection -->
+db.Employee_info.drop()
+
+3. Create capped collection -->
+db.createCollection("Employee_info",{capped:true, size:20480})
+
+4. Insert documents in collection -->
+> db.Employee_info.insert({ID:"1", Name:"Amod", Salary:30000, status:"A"})
+WriteResult({ "nInserted" : 1 })
+> db.Employee_info.insert({ID:"2", Name:"qwer", Salary:30000, status:"A"})
+WriteResult({ "nInserted" : 1 })
+> db.Employee_info.insert({ID:"3", Name:"zxcv", Salary:40000, status:"A"})
+WriteResult({ "nInserted" : 1 })
+> db.Employee_info.insert({ID:"3", Name:"hjkl", Salary:43000, status:"B"})
+WriteResult({ "nInserted" : 1 })
+> db.Employee_info.insert({ID:"3", Name:"uiop", Salary:23000, status:"B"})
+WriteResult({ "nInserted" : 1 })
+> db.Employee_info.insert({ID:"3", Name:"vbnm", Salary:25000, status:"A"})
+WriteResult({ "nInserted" : 1 })
+> db.Employee_info.insert({ID:"3", Name:"asdf", Salary:35000, status:"A"})
+WriteResult({ "nInserted" : 1 })
+> db.Employee_info.insert({ID:"3", Name:"bass", Salary:37000, status:"B"})
+WriteResult({ "nInserted" : 1 })
+
+5. Update documents -->
+db.Employee_info.update({Name:"hjkl"},{$set:{'ID':'4}})
+
+6. Multiple Update -->
+> db.Employee_info.update({ID:'3'},{$set:{'ID':'5'}},{multi:true})
+WriteResult({ "nMatched" : 5, "nUpserted" : 0, "nModified" : 5 })
+
+7. View the doocuments -->
+> db.Employee_info.find().pretty()
+{
+	"_id" : ObjectId("5d88866c0b5bb87e1e42cd9e"),
+	"ID" : "1",
+	"Name" : "Amod",
+	"Salary" : 30000,
+	"status" : "A"
+}
+{
+	"_id" : ObjectId("5d8886960b5bb87e1e42cd9f"),
+	"ID" : "2",
+	"Name" : "qwer",
+	"Salary" : 30000,
+	"status" : "A"
+}
+{
+	"_id" : ObjectId("5d8886ab0b5bb87e1e42cda0"),
+	"ID" : "3",
+	"Name" : "zxcv",
+	"Salary" : 40000,
+	"status" : "A"
+}
+{
+	"_id" : ObjectId("5d8886b50b5bb87e1e42cda1"),
+	"ID" : "4",
+	"Name" : "hjkl",
+	"Salary" : 43000,
+	"status" : "B"
+}
+{
+	"_id" : ObjectId("5d8886c00b5bb87e1e42cda2"),
+	"ID" : "3",
+	"Name" : "uiop",
+	"Salary" : 23000,
+	"status" : "B"
+}
+{
+	"_id" : ObjectId("5d8886d00b5bb87e1e42cda3"),
+	"ID" : "3",
+	"Name" : "vbnm",
+	"Salary" : 25000,
+	"status" : "A"
+}
+{
+	"_id" : ObjectId("5d8886dd0b5bb87e1e42cda4"),
+	"ID" : "3",
+	"Name" : "asdf",
+	"Salary" : 35000,
+	"status" : "A"
+}
+{
+	"_id" : ObjectId("5d8886ec0b5bb87e1e42cda5"),
+	"ID" : "3",
+	"Name" : "bass",
+	"Salary" : 37000,
+	"status" : "B"
+}
+
+
+
