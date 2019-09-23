@@ -64,6 +64,11 @@ db.Employee_info.update({Name:"hjkl"},{$set:{'ID':'4}})
 > db.Employee_info.update({ID:'3'},{$set:{'ID':'5'}},{multi:true})
 WriteResult({ "nMatched" : 5, "nUpserted" : 0, "nModified" : 5 })
 
+7. Upsert -->
+6. Multiple Update -->
+> db.Employee_info.update({ID:'3'},{$set:{'ID':'5'}},{upsert:true})
+WriteResult({ "nMatched" : 5, "nUpserted" : 0, "nModified" : 5 })
+
 7. View the doocuments -->
 > db.Employee_info.find().pretty()
 {
