@@ -1,0 +1,9 @@
+1. Map Reduce function -->
+db.Employee_info.mapReduce( 
+   function() { emit(this.name,this.Salary); }, 
+	
+   function(key, values) {return Array.sum(values)}, {  
+      query:{status:"A"},  
+      out:"salary_total" 
+   }
+)
