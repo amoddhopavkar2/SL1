@@ -1,0 +1,10 @@
+1. Aggregate function to find sum of salaries of all Employees -->
+> db.Employee_info.aggregate({$group:{_id:"$Name",totalSalary:{$sum:"$Salary"}}})
+{ "_id" : "bass", "totalSalary" : 37000 }
+{ "_id" : "vbnm", "totalSalary" : 25000 }
+{ "_id" : "asdf", "totalSalary" : 35000 }
+{ "_id" : "Amod", "totalSalary" : 180000 }
+{ "_id" : "uiop", "totalSalary" : 23000 }
+{ "_id" : "qwer", "totalSalary" : 30000 }
+{ "_id" : "zxcv", "totalSalary" : 40000 }
+{ "_id" : "hjkl", "totalSalary" : 43000 }
